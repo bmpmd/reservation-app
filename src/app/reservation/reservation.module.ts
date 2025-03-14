@@ -5,6 +5,7 @@ import { ReservationFormComponent } from '../reservation-form/reservation-form.c
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomeModule } from '../home/home.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    HomeModule
 
   ]
 })
