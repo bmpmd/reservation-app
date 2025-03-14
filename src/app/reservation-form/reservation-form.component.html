@@ -5,6 +5,7 @@
     <label>Guest Name </label>
     <input formControlName="guestName" type="text" placeholder="guest name.." />
     <div *ngIf="reservationForm.get('guestName')?.invalid && reservationForm.get('guestName')?.touched" > Guest name is required.</div>
+
 </div>
   <div>
     <label>Guest Email </label>
