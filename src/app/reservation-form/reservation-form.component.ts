@@ -1,3 +1,4 @@
+import { ReservationService } from './../reservation/reservation.service';
 import { Component } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 @Component({
@@ -8,7 +9,9 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 export class ReservationFormComponent {
   reservationForm: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+    private reservationService: ReservationService
+   ) {
     this.reservationForm = formBuilder.group({
       checkinDate: ['', Validators.required],
       checkoutDate: ['', Validators.required],
@@ -20,7 +23,9 @@ export class ReservationFormComponent {
 
   onSubmit() {
     if(this.reservationForm.valid){
+      this.reservationService.createReservation(this.reservationForm.value)
       console.log('submitted');
+
     }
     
   }
