@@ -29,9 +29,13 @@ export class ReservationFormComponent {
       //by getting the reservation and populating the fields 
     let id = this.activatedRoute.snapshot.paramMap.get("id")
     if(id){
-      let reservation = this.reservationService.getReservation(id)
-      if(reservation)
-        this.reservationForm.patchValue(reservation)
+      // let reservation = this.reservationService.getReservation(id)
+      // if(reservation)
+      //   this.reservationForm.patchValue(reservation)
+      reservationService.getReservation(id).subscribe(res =>{
+        if(res)
+          this.reservationForm.patchValue(res)
+      })
     }
   }
 
@@ -46,11 +50,15 @@ export class ReservationFormComponent {
       if(id){
 
         //update
-        this.reservationService.updateReservation(id, reservation)
+        this.reservationService.updateReservation(id, reservation).subscribe(()=>{
+          console.log("update request processed!")
+        })
       }
       else{
         //otherwise we r adding
-        this.reservationService.createReservation(reservation)
+        this.reservationService.createReservation(reservation).subscribe(()=>{
+          console.log("create request processed!");
+        })
 
       }
 
